@@ -7,8 +7,8 @@
     <ProjectGuid>{7B0DDA5A-0A44-4288-8ABA-D7C08A11A63E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cake.Docker.Tests</RootNamespace>
-    <AssemblyName>Cake.Docker.Tests</AssemblyName>
+    <RootNamespace>Cake.ImageMagick.Tests</RootNamespace>
+    <AssemblyName>CakeImageMagick.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,10 @@
   <ItemGroup>
     <Reference Include="Cake.Core">
       <HintPath>..\packages\Cake.Core.0.10.1\lib\net45\Cake.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Cake.Testing, Version=0.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cake.Testing.0.10.1\lib\net45\Cake.Testing.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>

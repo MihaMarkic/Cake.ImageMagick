@@ -1,4 +1,6 @@
-﻿using Cake.Core.IO;
+﻿using Cake.Core;
+using Cake.Core.IO;
+using Cake.Testing;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,7 +130,9 @@ namespace Cake.ImageMagick.Tests
                 TestSettings input = new TestSettings { String = "tubo" };
 
                 ProcessArgumentBuilder builder = new ProcessArgumentBuilder();
-                builder.AppendAll(input, new FilePath[] { "arg1" });
+                var environment = FakeEnvironment.CreateWindowsEnvironment();
+                environment.WorkingDirectory = ".";
+                builder.AppendAll(environment, input, new FilePath[] { "arg1" });
                 var actual = builder.Render();
 
                 Assert.That(actual, Is.EqualTo("--string=\"tubo\" arg1"));
@@ -143,5 +147,14 @@ namespace Cake.ImageMagick.Tests
         public string[] Strings { get; set; }
         public int? NullableInt { get; set; }
         public bool Bool { get; set; }
+
+        public decimal? NullableDecimal { get; set; }
+        public FilePath FilePath { get; set; }
+        public Channel[] Channels { get; set; }
+        public ActiveString ActiveString { get; set; }
+        public ActiveInts ActiveInts { get; set; }
+        public ComplexOperator ComplexOperator { get; set; }
+        [Bool(Options = Options.PlusMinus)]
+        public bool? PlusMinusBool { get; set; }
     }
 }

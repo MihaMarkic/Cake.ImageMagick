@@ -1,7 +1,7 @@
 ﻿using Cake.Core;
 using Cake.Core.IO;
 using Cake.Core.Tooling;
-using System.Collections.Generic;
+using System;
 
 namespace Cake.ImageMagick
 {
@@ -12,6 +12,7 @@ namespace Cake.ImageMagick
     public abstract class ConvertTool<TSettings>: Tool<TSettings>
         where TSettings: AutoToolSettings
     {
+        protected readonly ICakeEnvironment environment;
         /// <summary>
         /// Initializes a new instance of the <see cref="ConvertTo"/> class.
         /// </summary>
@@ -26,6 +27,11 @@ namespace Cake.ImageMagick
             IGlobber globber)
             : base(fileSystem, environment, processRunner, globber)
         {
+            if (environment == null)
+            {
+                throw new ArgumentNullException("environment");
+            }
+            this.environment = environment;
         }
     }
 }

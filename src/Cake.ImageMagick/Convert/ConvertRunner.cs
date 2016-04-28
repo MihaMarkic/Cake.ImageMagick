@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Cake.ImageMagick
 {
-    public class ConvertRunner: GenericImageMagickRunner<ImageMagickConvertSettings>
+    public sealed class ConvertRunner: GenericImageMagickRunner<ImageMagickConvertSettings>
     {
         public ConvertRunner(IFileSystem fileSystem, ICakeEnvironment environment, IProcessRunner processRunner, IGlobber globber) 
             : base(fileSystem, environment, processRunner, globber)

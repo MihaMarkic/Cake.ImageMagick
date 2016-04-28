@@ -8,7 +8,7 @@ namespace Cake.ImageMagick
 {
     public static class ArgumentsBuilderExtension
     {
-        public static void AppendAll<TSettings>(this ProcessArgumentBuilder builder, TSettings settings, FilePath[] files)
+        public static void AppendAll<TSettings>(this ProcessArgumentBuilder builder, ICakeEnvironment environment, TSettings settings, FilePath[] files)
             where TSettings: AutoToolSettings, new()
         {
             if (builder == null)
@@ -37,7 +37,7 @@ namespace Cake.ImageMagick
             {
                 foreach (FilePath file in files)
                 {
-                    builder.Append(file.ToString());
+                    builder.Append(file.MakeAbsolute(environment).FullPath);
                 }
             }
         }

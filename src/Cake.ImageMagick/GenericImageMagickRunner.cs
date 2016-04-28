@@ -28,7 +28,7 @@ namespace Cake.ImageMagick
         private ProcessArgumentBuilder GetArguments(TSettings settings, FilePath[] files)
         {
             var builder = new ProcessArgumentBuilder();
-            builder.AppendAll(settings, files);
+            builder.AppendAll(environment, settings, files);
             return builder;
         }
     }

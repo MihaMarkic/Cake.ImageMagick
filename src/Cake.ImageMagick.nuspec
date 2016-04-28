@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+      <id>Cake.ImageMagick</id>
+      <version>$version$</version>
+      <authors>Righthand</authors>
+      <owners>Righthand</owners>
+      <title>Cake.ImageMagick</title>
+      <description>Cake Build addin for ImageMagick.</description>
+      <summary>ImageMagick command line addin for cake build.</summary>
+      <licenseUrl>https://github.com/MihaMarkic/Cake.ImageMagick/blob/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/MihaMarkic/Cake.ImageMagick</projectUrl>
+      <releaseNotes>See https://github.com/MihaMarkic/Cake.ImageMagick/blob/master/ReleaseNotes.md</releaseNotes>
+      
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <copyright>Copyright (c) Righthand 2016</copyright>
+      <tags>Cake Script Build ImageMagick</tags>
+
+      <dependencies>
+         <dependency id="Cake.Core" version="0.10.1" />
+      </dependencies>
+   </metadata>
+
+   <files>
+		<file src="Cake.ImageMagick\bin\Release\Cake.ImageMagick.dll" target="lib\net45\Cake.ImageMagick.dll" />
+        <file src="Cake.ImageMagick\bin\Release\Cake.ImageMagick.XML" target="lib\net45\Cake.ImageMagick.XML" />
+   </files>
+</package>

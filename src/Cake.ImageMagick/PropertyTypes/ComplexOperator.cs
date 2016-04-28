@@ -8,6 +8,6 @@
         magnitudePhase,
         multiply,
         realImaginary,
-        subtract,
+        subtract
     }
 }

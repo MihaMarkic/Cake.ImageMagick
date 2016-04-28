@@ -2,6 +2,7 @@
 using Cake.Core.IO;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Cake.ImageMagick
@@ -131,6 +132,22 @@ namespace Cake.ImageMagick
                 }
             }
             return result;
+        }
+
+        public static string GetEnumValue<T>(T enumValue)
+        {
+            var type = typeof(T);
+            var memInfo = type.GetMember(enumValue.ToString());
+            var attributes = memInfo[0].GetCustomAttributes(typeof(ArgValueAttribute),false);
+            var argValue = (ArgValueAttribute)attributes.SingleOrDefault(a => a is ArgValueAttribute);
+            if (argValue != null)
+            {
+                return argValue.Value;
+            }
+            else
+            {
+                return enumValue.ToString();
+            }
         }
     }
 }

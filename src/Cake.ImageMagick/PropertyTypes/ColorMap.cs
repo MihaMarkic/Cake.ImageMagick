@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cake.ImageMagick.PropertyTypes
+﻿namespace Cake.ImageMagick
 {
-    class ColorMap
+    public enum ColorMap
     {
+        shared,
+        @private
     }
 }

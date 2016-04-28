@@ -1,13 +1,22 @@
-﻿namespace Cake.ImageMagick
+namespace Cake.ImageMagick
 {
-    public struct RadiusSigma
+
+    public struct RadiusSigmaAngle
     {
         public int Radius;
         public int? Sigma;
-        public RadiusSigma(int radius, int? sigma = null)
+        public int? Angle;
+        public RadiusSigmaAngle(int radius)
+        {
+            Radius = radius;
+            Sigma = null;
+            Angle = null;
+        }
+        public RadiusSigmaAngle(int radius, int sigma, int angle)
         {
             Radius = radius;
             Sigma = sigma;
+            Angle = angle;
         }
 
         public override string ToString()
@@ -20,6 +29,4 @@
             return result;
         }
     }
-
-    
 }

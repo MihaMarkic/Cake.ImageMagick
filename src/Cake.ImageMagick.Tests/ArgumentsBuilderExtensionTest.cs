@@ -156,5 +156,9 @@ namespace Cake.ImageMagick.Tests
         public ComplexOperator ComplexOperator { get; set; }
         [Bool(Options = Options.PlusMinus)]
         public bool? PlusMinusBool { get; set; }
+        public Encoding Encoding { get; set; }
+        public EvaluateOperator EvaluateOperator { get; set; }
+        public MetricType MetricType { get; set; }
+        public Dictionary<string, string> KeyValue { get; set; }
     }
 }

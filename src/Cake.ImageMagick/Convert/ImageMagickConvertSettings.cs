@@ -1,4 +1,5 @@
 ﻿using Cake.Core.IO;
+using System.Collections.Generic;
 
 namespace Cake.ImageMagick
 {
@@ -88,7 +89,7 @@ namespace Cake.ImageMagick
         /// <summary>
         /// bias value add bias when convolving an image
         /// </summary>
-        public RelativeInt? Bias { get; set; }
+        public RelativeInt Bias { get; set; }
         /// <summary>
         /// Use black point compensation
         /// </summary>
@@ -96,7 +97,7 @@ namespace Cake.ImageMagick
         /// <summary>
         /// black-threshold value force all pixels below the threshold into black
         /// </summary>
-        public RelativeInt? BlackThreshold { get; set; }
+        public RelativeInt BlackThreshold { get; set; }
         /// <summary>
         /// blend an image into another by the given absolute value or percent
         /// </summary>
@@ -247,33 +248,38 @@ namespace Cake.ImageMagick
         [Bool(Options = Options.PlusMinus)]
         public bool? Contrast { get; set; }
         /// <summary>
+        /// Increase the contrast in an image by stretching the range of intensity values
+        /// </summary>
+        public Stretch? ContrastStretch { get; set; }
+        /// <summary>
         /// apply a convolution kernel to the image
         /// </summary>
-        public bool? Convolve { get; set; }
+        /// TODO enhance type
+        public string Convolve { get; set; }
         /// <summary>
         /// copy geometry offset copy pixels from one area of an image to another
         /// </summary>
-        public bool? Copy { get; set; }
+        public Copy? Copy { get; set; }
         /// <summary>
         /// crop the image
         /// </summary>
-        public bool? Crop { get; set; }
+        public Crop? Crop { get; set; }
         /// <summary>
         ///  cycle the image colormap
         /// </summary>
-        public bool? Cycle { get; set; }
+        public int? Cycle { get; set; }
         /// <summary>
         /// convert cipher pixels to plain
         /// </summary>
-        public bool? Decipher { get; set; }
-        /// <summary>
-        ///  display copious debugging information
-        /// </summary>
-        public bool? Debug { get; set; }
+        public FilePath Decipher { get; set; }
+        ///// <summary>
+        /////  display copious debugging information
+        ///// </summary>
+        //public bool? Debug { get; set; }
         /// <summary>
         /// define format:option define one or more image format options
         /// </summary>
-        public bool? Define { get; set; }
+        public Dictionary<string, string> Define { get; set; }
         /// <summary>
         ///   break down an image sequence into constituent parts
         /// </summary>
@@ -281,19 +287,27 @@ namespace Cake.ImageMagick
         /// <summary>
         ///   display the next image after pausing
         /// </summary>
-        public bool? Delay { get; set; }
+        public Delay? Delay { get; set; }
         /// <summary>
         ///  delete the image from the image sequence
         /// </summary>
-        public bool? Delete { get; set; }
+        public int[] Delete { get; set; }
         /// <summary>
         ///  horizontal and vertical density of the image
         /// </summary>
-        public bool? Density { get; set; }
+        public AreaSize? Density { get; set; }
         /// <summary>
         ///   image depth
         /// </summary>
-        public bool? Depth { get; set; }
+        public int? Depth { get; set; }
+        /// <summary>
+        /// obtain image by descending window hierarchy
+        /// </summary>
+        public bool? Descend { get;  set; }
+        /// <summary>
+        /// straighten an image
+        /// </summary>
+        public RelativeInt Deskew { get; set; }
         /// <summary>
         /// despeckle reduce the speckles within an image
         /// </summary>
@@ -301,55 +315,67 @@ namespace Cake.ImageMagick
         /// <summary>
         ///    render text right-to-left or left-to-right
         /// </summary>
-        public bool? Direction { get; set; }
+        public Direction? Direction { get; set; }
+        /// <summary>
+        /// shift image pixels as defined by a displacement map
+        /// </summary>
+        public Displace Displace { get; set; }
         /// <summary>
         ///    get image or font from this X server
         /// </summary>
-        public bool? Display { get; set; }
+        public Display? Display { get; set; }
         /// <summary>
         ///    layer disposal method
         /// </summary>
-        public bool? Dispose { get; set; }
+        public DisposeMethod? Dispose { get; set; }
+        /// <summary>
+        /// maximum RMSE for subimage match (default 0.2)
+        /// </summary>
+        public decimal? DissimilarityThreshold { get; set; }
+        /// <summary>
+        /// dissolve an image into another by the given percent
+        /// </summary>
+        public Dissolve? Dissolve { get; set; }
         /// <summary>
         /// launch a distributed pixel cache server
         /// </summary>
-        public bool? DistributeCache { get; set; }
+        public int? DistributeCache { get; set; }
         /// <summary>
         /// distort type coefficients distort image
         /// </summary>
-        public bool? Distort { get; set; }
+        public Distort? Distort { get; set; }
         /// <summary>
         /// apply error diffusion to image
         /// </summary>
-        public bool? Dither { get; set; }
+        public ActiveValue<DitherMethod> Dither { get; set; }
         /// <summary>
         /// draw string annotate the image with a graphic primitive
         /// </summary>
-        public bool? Draw { get; set; }
+        public string Draw { get; set; }
         /// <summary>
         /// duplicate count, indexes duplicate an image one or more times
         /// </summary>
-        public bool? Duplicate { get; set; }
+        public ActiveValue<Duplicate> Duplicate { get; set; }
         /// <summary>
         ///   apply a filter to detect edges in the image
         /// </summary>
-        public bool? Edge { get; set; }
+        public int? Edge { get; set; }
         /// <summary>
         /// emboss an image
         /// </summary>
-        public bool? Emboss { get; set; }
+        public int? Emboss { get; set; }
         /// <summary>
         /// convert plain pixels to cipher pixels
         /// </summary>
-        public bool? Encipher { get; set; }
+        public FilePath Encipher { get; set; }
         /// <summary>
         /// text encoding type
         /// </summary>
-        public bool? Encoding { get; set; }
+        public Encoding? Encoding { get; set; }
         /// <summary>
         ///   endianness (MSB or LSB) of the image
         /// </summary>
-        public bool? Endian { get; set; }
+        public Endian? Endian { get; set; }
         /// <summary>
         ///   apply a digital filter to enhance a noisy image
         /// </summary>
@@ -361,27 +387,27 @@ namespace Cake.ImageMagick
         /// <summary>
         ///   evaluate an arithmetic, relational, or logical expression
         /// </summary>
-        public bool? Evaluate { get; set; }
+        public Evaluate? Evaluate { get; set; }
         /// <summary>
         /// evaluate an arithmetic, relational, or logical expression for an image sequence
         /// </summary>
-        public bool? EvaluateSequence { get; set; }
+        public string EvaluateSequence { get; set; }
         /// <summary>
         ///   set the image size
         /// </summary>
-        public bool? Extent { get; set; }
+        public Geometry Extent { get; set; }
         /// <summary>
         ///  extract area from image
         /// </summary>
-        public bool? Extract { get; set; }
+        public Geometry Extract { get; set; }
         /// <summary>
         ///   render text with this font family
         /// </summary>
-        public bool? Family { get; set; }
-        /// <summary>
-        /// analyze image features (e.g.contract, correlations, etc.).
-        /// </summary>
-        public bool? Features { get; set; }
+        public string Family { get; set; }
+        ///// <summary>
+        ///// analyze image features (e.g.contract, correlations, etc.).
+        ///// </summary>
+        //public bool? Features { get; set; }
         /// <summary>
         ///   implements the discrete Fourier transform(DFT)
         /// </summary>
@@ -389,11 +415,11 @@ namespace Cake.ImageMagick
         /// <summary>
         /// fill color color to use when filling a graphic primitive
         /// </summary>
-        public bool? Fill { get; set; }
+        public string Fill { get; set; }
         /// <summary>
         /// filter type use this filter when resizing an image
         /// </summary>
-        public bool? Filter { get; set; }
+        public Filter? Filter { get; set; }
         /// <summary>
         ///   flatten a sequence of images
         /// </summary>
@@ -405,7 +431,7 @@ namespace Cake.ImageMagick
         /// <summary>
         ///  floodfill the image with color
         /// </summary>
-        public bool? Floodfill { get; set; }
+        public FloodFill? Floodfill { get; set; }
         /// <summary>
         ///  flop image in the horizontal direction
         /// </summary>
@@ -413,59 +439,79 @@ namespace Cake.ImageMagick
         /// <summary>
         /// font name render text with this font
         /// </summary>
-        public bool? Font { get; set; }
+        public string Font { get; set; }
+        /// <summary>
+        /// Define the foreground color for menus
+        /// </summary>
+        public string Foreground { get; set; }
         /// <summary>
         /// format string output formatted image characteristics
         /// </summary>
-        public bool? Format { get; set; }
+        public string Format { get; set; }
         /// <summary>
         /// frame geometry surround image with an ornamental border
         /// </summary>
-        public bool? Frame { get; set; }
+        public Geometry Frame { get; set; }
         /// <summary>
         /// function name apply a function to the image
         /// </summary>
-        public bool? Function { get; set; }
+        public Function? Function { get; set; }
         /// <summary>
         /// fuzz distance colors within this distance are considered equal
         /// </summary>
-        public bool? Fuzz { get; set; }
+        public RelativeInt Fuzz { get; set; }
         /// <summary>
         /// fx expression apply mathematical expression to an image channel(s)
         /// </summary>
-        public bool? Fx { get; set; }
+        public string Fx { get; set; }
         /// <summary>
         /// gamma value level of gamma correction
         /// </summary>
-        public bool? Gamma { get; set; }
+        public decimal[] Gamma { get; set; }
         /// <summary>
         /// gaussian-blur geometry reduce image noise and reduce detail levels
         /// </summary>
-        public bool? GaussianBlur { get; set; }
+        public RadiusSigma? GaussianBlur { get; set; }
         /// <summary>
         /// geometry geometry preferred size or location of the image
         /// </summary>
-        public bool? Geometry { get; set; }
+        public Geometry Geometry { get; set; }
         /// <summary>
         /// gravity type horizontal and vertical text placement
         /// </summary>
-        public bool? Gravity { get; set; }
+        public GravityType? Gravity { get; set; }
         /// <summary>
         /// grayscale method convert image to grayscale
         /// </summary>
-        public bool? Grayscale { get; set; }
+        public IntensityMethod? Grayscale { get; set; }
         /// <summary>
         /// green-primary point chromaticity green primary point
         /// </summary>
-        public bool? GreenPrimary { get; set; }
+        public Point? GreenPrimary { get; set; }
         /// <summary>
-        ///  print program options
+        /// apply a Hald color lookup table to the image
         /// </summary>
-        public bool? Help { get; set; }
+        public bool? HaldCut { get; set; }
+        /// <summary>
+        /// when comparing images, emphasize pixel differences with this color
+        /// </summary>
+        public string HighlightColor { get; set; }
+        ///// <summary>
+        /////  print program options
+        ///// </summary>
+        //public bool? Help { get; set; }
         /// <summary>
         /// hough-lines geometry identify lines in the image
         /// </summary>
-        public bool? HoughLines { get; set; }
+        public HoughLines? HoughLines { get; set; }
+        /// <summary>
+        /// specify the icon geometry
+        /// </summary>
+        public Geometry IconGeometry { get; set; }
+        /// <summary>
+        /// start in icon mode in X Windows", 'animate', 'display
+        /// </summary>
+        public bool? Iconic { get; set; }
         /// <summary>
         ///  identify the format and characteristics of the image
         /// </summary>
@@ -473,123 +519,144 @@ namespace Cake.ImageMagick
         /// <summary>
         ///   implements the inverse discrete Fourier transform(DFT)
         /// </summary>
+        [Bool(Options = Options.PlusMinus)]
         public bool? Ift { get; set; }
+        /// <summary>
+        /// make image immutable
+        /// </summary>
+        public bool? Immutable { get; set; }
         /// <summary>
         /// implode amount implode image pixels about the center
         /// </summary>
-        public bool? Implode { get; set; }
+        public decimal? Implode { get; set; }
         /// <summary>
         /// insert index insert last image into the image sequence
         /// </summary>
-        public bool? Insert { get; set; }
+        public ActiveValue<int> Insert { get; set; }
         /// <summary>
         /// intensity method method to generate an intensity value from a pixel
         /// </summary>
-        public bool? Intensity { get; set; }
+        public IntensityMethod? Intensity { get; set; }
         /// <summary>
         /// intent type type of rendering intent when managing the image color
         /// </summary>
-        public bool? Intent { get; set; }
+        public IntentType? Intent { get; set; }
         /// <summary>
         /// interlace type type of image interlacing scheme
         /// </summary>
-        public bool? Interlace { get; set; }
+        public InterlaceType? Interlace { get; set; }
         /// <summary>
         /// interline-spacing value the space between two text lines
         /// </summary>
-        public bool? InterlineSpacing { get; set; }
+        public int? InterlineSpacing { get; set; }
         /// <summary>
         /// interpolate method pixel color interpolation method
         /// </summary>
-        public bool? Interpolate { get; set; }
+        public InterpolateType? Interpolate { get; set; }
         /// <summary>
         /// interword-spacing value the space between two words
         /// </summary>
-        public bool? InterwordSpacing { get; set; }
+        public int? InterwordSpacing { get; set; }
         /// <summary>
         /// kerning value the space between two characters
         /// </summary>
-        public bool? Kerning { get; set; }
+        public int? Kerning { get; set; }
         /// <summary>
         /// kuwahara geometry edge preserving noise reduction filter
         /// </summary>
-        public bool? Kuwahara { get; set; }
+        public RadiusSigma? Kuwahara { get; set; }
         /// <summary>
         /// label string assign a label to an image
         /// </summary>
-        public bool? Label { get; set; }
+        public string Label { get; set; }
         /// <summary>
         /// lat geometry local adaptive thresholding
         /// </summary>
-        public bool? Lat { get; set; }
+        public Lat? Lat { get; set; }
         /// <summary>
         /// layers method optimize or compare image layers
         /// </summary>
-        public bool? Layers { get; set; }
+        public LayersMethod? Layers { get; set; }
         /// <summary>
         /// level value adjust the level of image contrast
         /// </summary>
-        public bool? Level { get; set; }
+        public Level? Level { get; set; }
+        /// <summary>
+        /// adjust the level of an image using the provided dash separated colors
+        /// </summary>
+        public LevelColors? LevelColors { get; set; }
         /// <summary>
         ///  pixel cache resource limit
         /// </summary>
-        public bool? Limit { get; set; }
+        public Limit[] Limit { get; set; }
         /// <summary>
         /// linear-stretch geometry linear with saturation histogram stretch
         /// </summary>
-        public bool? LinearStretch { get; set; }
+        public Stretch? LinearStretch { get; set; }
         /// <summary>
         /// liquid-rescale geometry rescale image with seam-carving
         /// </summary>
-        public bool? LiquidRescale { get; set; }
+        public Geometry LiquidRescale { get; set; }
         /// <summary>
-        /// list type Color, Configure, Delegate, Format, Magic, Module, Resource, or Type
+        /// the line width for subsequent draw operations
         /// </summary>
-        public bool? List { get; set; }
+        public int? LineWidth { get; set; }
+        ///// <summary>
+        ///// list type Color, Configure, Delegate, Format, Magic, Module, Resource, or Type
+        ///// </summary>
+        //public bool? List { get; set; }
         /// <summary>
         /// log format format of debugging information
         /// </summary>
-        public bool? Log { get; set; }
+        public string Log { get; set; }
         /// <summary>
         /// loop iterations add Netscape loop extension to your GIF animation
         /// </summary>
-        public bool? Loop { get; set; }
+        public int? Loop { get; set; }
+        /// <summary>
+        /// when comparing images, de-emphasize pixel differences with this color
+        /// </summary>
+        public string LowlightColor { get; set; }
+        /// <summary>
+        /// double the size of the image with pixel art scaling
+        /// </summary>
+        public bool? Magnify { get; set; }
         /// <summary>
         /// mask filename associate a mask with the image
         /// </summary>
-        public bool? Mask { get; set; }
+        public FilePath Mask { get; set; }
         /// <summary>
         /// mattecolor color frame color
         /// </summary>
-        public bool? Mattecolor { get; set; }
+        public string Mattecolor { get; set; }
         /// <summary>
         /// median radius apply a median filter to the image
         /// </summary>
-        public bool? Median { get; set; }
+        public Geometry Median { get; set; }
         /// <summary>
         /// mean-shift geometry delineate arbitrarily shaped clusters in the image
         /// </summary>
-        public bool? MeanShift { get; set; }
+        public MeanShift? MeanShift { get; set; }
         /// <summary>
         /// metric type measure differences between images with this metric
         /// </summary>
-        public bool? Metric { get; set; }
+        public MetricType? Metric { get; set; }
         /// <summary>
         /// mode radius make each pixel the 'predominant color' of the neighborhood
         /// </summary>
-        public bool? Mode { get; set; }
+        public Mode? Mode { get; set; }
         /// <summary>
         /// modulate value vary the brightness, saturation, and hue
         /// </summary>
-        public bool? Modulate { get; set; }
+        public Modulate Modulate { get; set; }
         /// <summary>
         ///   display image moments.
         /// </summary>
         public bool? Moments { get; set; }
-        /// <summary>
-        ///   monitor progress
-        /// </summary>
-        public bool? Monitor { get; set; }
+        ///// <summary>
+        /////   monitor progress
+        ///// </summary>
+        //public bool? Monitor { get; set; }
         /// <summary>
         ///    transform image to black and white
         /// </summary>
@@ -597,15 +664,19 @@ namespace Cake.ImageMagick
         /// <summary>
         /// morph value morph an image sequence
         /// </summary>
-        public bool? Morph { get; set; }
+        public int? Morph { get; set; }
         /// <summary>
         ///  apply a morphology method to the image
         /// </summary>
-        public bool? Morphology { get; set; }
+        public Morphology? Morphology { get; set; }
         /// <summary>
         /// motion-blur geometry simulate motion blur
         /// </summary>
-        public bool? MotionBlur { get; set; }
+        public RadiusSigmaAngle? MotionBlur { get; set; }
+        /// <summary>
+        /// name an image
+        /// </summary>
+        public string Name { get; set; }
         /// <summary>
         ///    replace each pixel with its complementary color
         /// </summary>
@@ -613,7 +684,7 @@ namespace Cake.ImageMagick
         /// <summary>
         /// noise radius add or reduce noise in an image
         /// </summary>
-        public bool? Noise { get; set; }
+        public Noise Noise { get; set; }
         /// <summary>
         /// transform image to span the full range of colors
         /// </summary>
@@ -621,7 +692,11 @@ namespace Cake.ImageMagick
         /// <summary>
         /// opaque color change this color to the fill color
         /// </summary>
-        public bool? Opaque { get; set; }
+        public string Opaque { get; set; }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // http://www.imagemagick.org/script/command-line-options.php#adaptive-blur
+
         /// <summary>
         /// ordered-dither NxN ordered dither the image
         /// </summary>
